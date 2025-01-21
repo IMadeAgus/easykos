@@ -13,6 +13,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
@@ -71,19 +72,48 @@ class BoardingHouseResource extends Resource
                         Tabs\Tab::make('Bonus Ngekos')
                             ->schema([
                                 Repeater::make('bonuses')
+                                    ->relationship('bonuses')
                                     ->schema([
                                         FileUpload::make('image')
                                             ->image()
                                             ->directory('bonuses')
-                                            ->required(),
+                                            ->required()
+                                            ->columnSpan(2),
                                         TextInput::make('name')->required(),
                                         TextInput::make('description')->required(),
                                     ])
                                     ->columns(2)
                             ]),
-                        Tabs\Tab::make('Tab 3')
+                        Tabs\Tab::make('Kamar')
                             ->schema([
-                                // ...
+                                Repeater::make('rooms')
+                                    ->relationship('rooms')
+                                    ->schema([
+
+                                        TextInput::make('name')->required(),
+                                        TextInput::make('room_type')->required(),
+                                        TextInput::make('square_feet')
+                                            ->numeric()
+                                            ->required(),
+                                        TextInput::make('capasity')
+                                            ->numeric()
+                                            ->required(),
+                                        TextInput::make('price_per_month')
+                                            ->numeric()
+                                            ->prefix('IDR')
+                                            ->required(),
+                                        Toggle::make('is_avaible')
+                                            ->required(),
+                                        Repeater::make('images')
+                                            ->relationship('images')
+                                            ->schema([
+                                                FileUpload::make('image')
+                                                    ->image()
+                                                    ->directory('rooms')
+                                                    ->required()
+                                            ])->columnSpan(2),
+                                    ])
+                                    ->columns(2)
                             ]),
                     ])->columnSpan(2)
             ]);
