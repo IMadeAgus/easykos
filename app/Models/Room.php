@@ -11,7 +11,7 @@ class Room extends Model
 
     //Menentukan kolom mana yang bisa di isi
     protected $fillable = [
-        'boarding_houses_id',
+        'boarding_house_id',
         'name',
         'room_type',
         'square_feet',

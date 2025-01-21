@@ -18,6 +18,8 @@ use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -89,9 +91,10 @@ class BoardingHouseResource extends Resource
                                 Repeater::make('rooms')
                                     ->relationship('rooms')
                                     ->schema([
-
-                                        TextInput::make('name')->required(),
-                                        TextInput::make('room_type')->required(),
+                                        TextInput::make('name')
+                                            ->required(),
+                                        TextInput::make('room_type')
+                                            ->required(),
                                         TextInput::make('square_feet')
                                             ->numeric()
                                             ->required(),
@@ -102,7 +105,7 @@ class BoardingHouseResource extends Resource
                                             ->numeric()
                                             ->prefix('IDR')
                                             ->required(),
-                                        Toggle::make('is_avaible')
+                                        Toggle::make('is_available')
                                             ->required(),
                                         Repeater::make('images')
                                             ->relationship('images')
@@ -123,13 +126,21 @@ class BoardingHouseResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name'),
+                TextColumn::make('city.name'),
+                TextColumn::make('category.name'),
+                TextColumn::make('price'),
+                ImageColumn::make('thumbnail'),
+
+
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
