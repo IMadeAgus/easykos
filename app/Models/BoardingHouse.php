@@ -16,6 +16,7 @@ class BoardingHouse extends Model
         'thumbnail',
         'city_id',
         'category_id',
+        'description',
         'price',
         'address'
     ];
