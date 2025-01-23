@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Testimonial extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     //Menentukan kolom mana yang bisa di isi
     protected $fillable = [
         'boarding_houses_id',
