@@ -14,6 +14,7 @@ class Testimonial extends Model
         'boarding_houses_id',
         'photo',
         'name',
+        'content',
         'rating',
     ];
 
