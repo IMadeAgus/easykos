@@ -5,11 +5,11 @@
                 <img src="assets/images/icons/global-green.svg" class="w-8 h-8 flex shrink-0" alt="icon">
                 <span class="font-semibold text-sm text-white">Discover</span>
             </a>
-            <a href="check-booking.html" class="flex flex-col items-center text-center gap-2">
+            <a href="{{ route('check-booking') }}" class="flex flex-col items-center text-center gap-2">
                 <img src="assets/images/icons/note-favorite.svg" class="w-8 h-8 flex shrink-0" alt="icon">
                 <span class="font-semibold text-sm text-white">Orders</span>
             </a>
-            <a href="find-kos.html" class="flex flex-col items-center text-center gap-2">
+            <a href="{{ route('find-kos') }}" class="flex flex-col items-center text-center gap-2">
                 <img src="assets/images/icons/search-status.svg" class="w-8 h-8 flex shrink-0" alt="icon">
                 <span class="font-semibold text-sm text-white">Find</span>
             </a>
