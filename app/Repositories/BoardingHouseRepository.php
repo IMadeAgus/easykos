@@ -14,15 +14,15 @@ class BoardingHouseRepository implements BoardingHouseRepositoryInterface
         $query = BoardingHouse::query();
 
         if ($search) {
-            $query->where('name', 'like', '%', $search . '%');
+            $query->where('name', 'like', '%' . $search . '%');
         }
         if ($city) {
-            $query->where('city', function (Builder $query) use ($city) {
+            $query->whereHas('city', function (Builder $query) use ($city) {
                 $query->where('slug', $city);
             });
         }
         if ($category) {
-            $query->where('category', function (Builder $query) use ($category) {
+            $query->whereHas('category', function (Builder $query) use ($category) {
                 $query->where('slug', $category);
             });
         }
@@ -31,7 +31,7 @@ class BoardingHouseRepository implements BoardingHouseRepositoryInterface
 
     public function getPopularBoardingHouse($limit = 5)
     {
-        return BoardingHouse::withCount('transaction')->orderBy('transaction_count', 'desc')->take($limit)->get();
+        return BoardingHouse::withCount('transactions')->orderBy('transactions_count', 'desc')->take($limit)->get();
     }
 
     public function getBoardingHouseByCitySlug($slug)
@@ -43,7 +43,7 @@ class BoardingHouseRepository implements BoardingHouseRepositoryInterface
 
     public function getBoardingHouseByCategorySlug($slug)
     {
-        return BoardingHouse::whereHas('categoty', function (Builder $query) use ($slug) {
+        return BoardingHouse::whereHas('category', function (Builder $query) use ($slug) {
             $query->where('slug', $slug);
         })->get();
     }
