@@ -96,7 +96,7 @@
     <section id="Cities" class="flex flex-col p-5 gap-4 bg-[#F5F6F8] mt-[30px]">
         <div class="flex items-center justify-between">
             <h2 class="font-bold">Browse Cities</h2>
-            <a href="#">
+            <a href="route">
                 <div class="flex items-center gap-2">
                     <span>See all</span>
                     <img src="assets/images/icons/arrow-right.svg" class="w-6 h-6 flex shrink-0" alt="icon">
@@ -105,7 +105,7 @@
         </div>
         <div class="grid grid-cols-2 gap-4">
             @foreach ($cities as $city)
-                <a href="cities.html" class="card">
+                <a href="{{ route('city.show', $city->slug) }}" class="card">
                     <div
                         class="flex items-center rounded-[22px] p-[10px] gap-3 bg-white border border-white overflow-hidden hover:border-[#91BF77] transition-all duration-300">
                         <div
