@@ -10,7 +10,7 @@
         </a>
         <p class="font-semibold">Browse Koskos</p>
         <div class="dummy-btn w-12"></div>
-    </div>
+    </div>g
     <div id="Header" class="relative flex items-center justify-between gap-2 px-5 mt-[18px]">
         <div class="flex flex-col gap-[6px]">
             <h1 class="font-bold text-[32px] leading-[48px]">Kos in {{ $city->name }}</h1>
