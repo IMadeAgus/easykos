@@ -6,13 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CustomerInformationStoreRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return false;
-    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -23,9 +16,10 @@ class CustomerInformationStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'requird|string',
-            'phone' => 'required|string',
-            ''
+            'email' => 'required|string',
+            'phone' => 'required|string|min:11|max:14',
+            'duration' => 'required',
+            'start_date' => 'required'
         ];
     }
 }

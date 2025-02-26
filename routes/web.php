@@ -20,6 +20,7 @@ Route::get('/kos/{slug}/rooms', [BoardingHouseController::class, 'rooms'])->name
 Route::get('/kos/booking/{slug}', [BookingController::class, 'booking'])->name('booking');
 Route::get('/kos/booking/{slug}/information', [BookingController::class, 'information'])->name('booking.information');
 Route::post('/kos/booking/{slug}/information/save', [BookingController::class, 'saveInformation'])->name('booking.information.save');
+Route::get('/kos/booking/{slug}/checkout', [BookingController::class, 'checkout'])->name('booking.checkout');
 
 
 
