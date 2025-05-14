@@ -80,7 +80,7 @@ From this project, I gained valuable experience in fullstack development combini
 1️⃣ Backend (Laravel + Filament)
 
 ```bash
-git clone [repository-url]
+git clone https://github.com/IMadeAgus/easykos.git
 cd kos-finder-project
 composer install
 cp .env.example .env
